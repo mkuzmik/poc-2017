@@ -4,7 +4,7 @@ close all;
 clc;
 
 %% read img
-original_img = imread('clock.bmp');
+original_img = imread('parrot.bmp');
 
 %% show img
 figure(1);
@@ -38,10 +38,10 @@ for x = 0:newWidth-1
             yN = actualHeight-2;
         end;
         
-        A = double(original_img(yN+1,xN+1));
-        B = double(original_img(yN+1,xN+2));
-        C = double(original_img(yN+2,xN+1));
-        D = double(original_img(yN+2,xN+2));
+        A = double(original_img(xN+1,yN+1));
+        B = double(original_img(xN+1,yN+2));
+        C = double(original_img(xN+2,yN+1));
+        D = double(original_img(xN+2,yN+2));
         
          
         rescaledImage(y + 1,x + 1) = ...

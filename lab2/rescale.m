@@ -4,18 +4,18 @@ close all;
 clc;
 
 %% read img
-parrot_bmp = imread('clock.bmp');
+original_img = imread('clock.bmp');
 
 %% show img
 figure(1);
-imshow(parrot_bmp);
+imshow(original_img);
 
 %% define scales
 xReScale = 3;
 yReScale = 3;
 
 %% compute new res
-[actualHeight, actualWidth] = size(parrot_bmp);
+[actualHeight, actualWidth] = size(original_img);
 newHeight = floor(yReScale * actualHeight);
 newWidth = floor(xReScale * actualWidth);
 
@@ -38,7 +38,7 @@ for x = 0:newWidth-1
             yNeighbour = actualHeight;
         end;
        
-        rescaledImg(y + 1,x + 1) = parrot_bmp(yNeighbour + 1, xNeighbour + 1);
+        rescaledImg(y + 1,x + 1) = original_img(yNeighbour + 1, xNeighbour + 1);
     end
 end
 
