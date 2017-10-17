@@ -4,7 +4,7 @@ close all;
 clc;
 
 %% read img
-original_img = imread('rescaled.bmp');
+original_img = imread('chessboard.bmp');
 
 %% show img
 figure(1);
@@ -40,8 +40,8 @@ for x = 0:newWidth-1
         
         A = double(original_img(yN+1,xN+1));
         B = double(original_img(yN+1,xN+2));
-        C = double(original_img(yN+2,xN+1));
-        D = double(original_img(yN+2,xN+2));
+        C = double(original_img(yN+2,xN+2));
+        D = double(original_img(yN+2,xN+1));
         
         i = xN/x;
         j = yN/y;
@@ -57,3 +57,7 @@ end
 %% show rescaled Img
 figure(2);
 imshow(uint8(rescaledImage));
+
+%% show image rescaled by matlab library
+figure(3);
+imshow(imresize(original_img, xReScale, 'bilinear'));

@@ -46,3 +46,7 @@ end
 figure(2);
 imshow(rescaledImg);
 imwrite(rescaledImg, 'rescaled.bmp');
+
+%% show image rescaled by matlab library
+figure(3);
+imshow(imresize(original_img, xReScale, 'nearest'));
