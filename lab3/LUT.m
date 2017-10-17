@@ -2,6 +2,7 @@
 function LUT( obraz, przekodowanie )
     output_img = intlut(obraz, przekodowanie);
 
+    figure;
     subplot(1,3,1);
     plot(przekodowanie);
     subplot(1,3,2);
