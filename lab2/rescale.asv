@@ -4,15 +4,15 @@ close all;
 clc;
 
 %% read img
-original_img = imread('clock.bmp');
+original_img = imread('chessboard.bmp');
 
 %% show img
 figure(1);
 imshow(original_img);
 
 %% define scales
-xReScale = 3;
-yReScale = 3;
+xReScale = 5;
+yReScale = 5;
 
 %% compute new res
 [actualHeight, actualWidth] = size(original_img);
@@ -23,7 +23,7 @@ newWidth = floor(xReScale * actualWidth);
 xStep = actualWidth / newWidth;
 yStep = actualHeight / newHeight;
 
-rescaledImage = uint8(zeros(newHeight, newWidth));
+rescaledImg = uint8(zeros(newHeight, newWidth));
 
 for x = 0:newWidth-1
     for y = 0:newHeight-1
@@ -45,3 +45,4 @@ end
 %% show rescaled Img
 figure(2);
 imshow(rescaledImg);
+imwrite(
