@@ -11,11 +11,12 @@ figure(1);
 imshow(original_img);
 
 %% resize and show
-newSize = 1024;
-resizedLena = imresize(original_img, newSize/512, 'bicubic');
-figure(2);
-imshow(resizedLena, 'InitialMagnification', 200);
+% newSize = 1024;
+% resizedLena = imresize(original_img, newSize/512, 'bicubic');
+% figure(2);
+% imshow(resizedLena, 'InitialMagnification', 200);
 
 % adjust and show
-adjust = 31;
-imshow(imadjust(original_img,0:adjust));
+figure;
+colors = 4;
+imshow(imadjust(original_img,[0; 1],[0 colors/256]),[]);

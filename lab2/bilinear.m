@@ -4,7 +4,7 @@ close all;
 clc;
 
 %% read img
-original_img = imread('chessboard.bmp');
+original_img = imread('chessboard2.bmp');
 
 %% show img
 figure(1);
