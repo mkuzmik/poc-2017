@@ -22,4 +22,7 @@ histeq(img, histogramZadany);
 
 %% adjust
 figure;
+subplot(1,2,1);
 imshow(imadjust(img));
+subplot(1,2,2);
+imshow(adapthisteq(img));

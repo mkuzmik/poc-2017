@@ -77,6 +77,46 @@ cum_lut = uint8(cum1 .* 255/max(cum1));
 
 he_algo(hist1_img);
 
+%% matlab builtin funs for hists
+
+
+I = histeq(hist1_img, 256);
+Iclahe = adapthisteq(hist1_img);
+figure;
+subplot(3,1,1);
+imshow(hist1_img);
+subplot(3,1,2);
+imshow(I);
+subplot(3,1,3);
+imshow(Iclahe);
+
+%% present other images
+img1 = imread('hist2.bmp');
+img2 = imread('hist3.bmp');
+img3 = imread('hist4.bmp');
+
+figure;
+subplot(3,3,1);
+imshow(img1);
+subplot(3,3,2);
+imshow(histeq(img1,256));
+subplot(3,3,3);
+imshow(adapthisteq(img1));
+
+subplot(3,3,4);
+imshow(img2);
+subplot(3,3,5);
+imshow(histeq(img2,256));
+subplot(3,3,6);
+imshow(adapthisteq(img2));
+
+subplot(3,3,7);
+imshow(img3);
+subplot(3,3,8);
+imshow(histeq(img3,256));
+subplot(3,3,9);
+imshow(adapthisteq(img3));
+
 %% functions
 
 function [x_axis, cumulated_normalized_hist, hist] = cumulatedHist(img)
@@ -87,7 +127,7 @@ function [x_axis, cumulated_normalized_hist, hist] = cumulatedHist(img)
 end
 
 function he_img = he_algo(img)
-    [x, cum, hist] = cumulatedHist(img);
+    [~, cum, ~] = cumulatedHist(img);
     cum_lut = uint8(cum .* 255/max(cum));
     he_img = intlut(img, cum_lut);
     
