@@ -8,12 +8,17 @@ img = imread('katalog.bmp');
 [x,y] = size(img);
 bw_img = img;
 
-window_size = 7;
+% properties
+window_size = 15;
 
 for i = 1:x
     for j = 1:y
-        avg = meanLT(i,j,window_size,img,x,y);
-        if bw_img(i,j) > avg
+        
+        avg = meanLT(i,j,floor(window_size/2),img,x,y);
+        
+        threshold = avg;
+        
+        if bw_img(i,j) > threshold
             bw_img(i,j) = 255;
         else
             bw_img(i,j) = 0;
@@ -32,19 +37,21 @@ img = imread('katalog.bmp');
 [x,y] = size(img);
 bw_img = img;
 
-window_size = 7;
-k = 0.15;
+% properties
+window_size = 20;
+k = 0.05;
 R = 128;
 
 for i = 1:x
     for j = 1:y
-        avg = meanLT(i,j,window_size,img,x,y);
-        std = stddevLT(i,j,window_size,img, avg, x, y);
+        avg = meanLT(i,j,floor(window_size/2),img,x,y);
+        std = stddevLT(i,j,floor(window_size/2),img, avg, x, y);
         
         a = avg * (1 + k * ((std/R) - 1));
         b = avg * (1 - k * ((std/R) - 1));
 
-        
+        % TODO (a or b)
+        threshold = a;
         
         if bw_img(i,j) > threshold
             bw_img(i,j) = 255;

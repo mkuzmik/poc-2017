@@ -53,25 +53,30 @@ figure;
 subplot(1,6,1);
 
 imshow(img);
+title('Original image');
 
 subplot(1,6,2);
 imhist(img);
+title('Histogram');
 
 threshold = graythresh(img);
 subplot(1,6,3);
 imshow(im2bw(img, threshold));
+title('Otsu');
 
 threshold = clusterKittler(img);
 subplot(1,6,4);
 imshow(im2bw(img, threshold/255));
+title('ClusterKittel()');
 
 threshold = entropyYen(img);
 subplot(1,6,5);
 imshow(im2bw(img, threshold/255));
+title('EntropyYen()');
 
 subplot(1,6,6);
 imshow(im2bw(img, 85/255));
-
+title('Custom Threshold');
 
 %% 8
 img = imread('rice.png');
