@@ -9,7 +9,7 @@ clear all;
 close all;
 
 %% Wczytanie obrazu
-iI=imread('lenaRGB.bmp');
+iI=imread('lenaRGBSzum.bmp');
 
 %% Ustalenie rozmiaru maski
 rozmiarMaski =3;
@@ -64,7 +64,7 @@ for i=1:X
 end
 
 
-%% Wyswietlenie wyników
+%% Wyswietlenie wynikï¿½w
 figure(1);
 subplot(1,3,1);
 imshow(iI);
