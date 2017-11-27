@@ -1,4 +1,4 @@
-%%1
+%% 1
 clear all;
 clearvars;
 clc;
@@ -54,7 +54,7 @@ se = strel('disk',10);
 tophat = imtophat(img, se);
 
 figure;
-subplot(1,3,1);
+subplot(1,2,1);
 imshow(img);
-subplot(1,3,2);
+subplot(1,2,2);
 imshow(tophat);
