@@ -13,19 +13,21 @@ global MRes;
 %% 2,3
 img_org = imread('umbrealla.png');
 threshold = 0.05;
-minimum = 2;
+minimum = 8;
 
-img_hsv = rgb2hsv(img_org);
-img_h = double(img_hsv(:,:,1));
+img = rgb2hsv(img_org);
+img_h = double(img(:,:,1));
 
-[y, x] = size(img_h);
+[y, x] = size(img);
 
 segRes = zeros(x,y);
 MRes = zeros(x,y);
 index = -1;
 
-split(img_h,1,1,x,y);
+split(img,1,1,x,y);
 
+segResSplitted = segRes;
+MResSplitted = MRes;
 i = 0;
 
 while i <= index
@@ -37,15 +39,15 @@ while i <= index
         absdiff = imabsdiff(dilate,IB);
         multiplied = absdiff.*segRes;
         nonzerosd = nonzeros(multiplied);
-        uniques = unique(nonzerosd);
+        unique = unique(nonzerosd);
         
         is_joined = 0;
-        for k = 1:numel(uniques);
-            IBS = segRes == uniques(k);
+        for k = 1:numel(unique);
+            IBS = segRes == unique(k);
             [yFS, xFS] = find(IBS,1,'first');
             
             color_diff = abs(MRes(yF,xF) - MRes(yFS, xFS));
-            if color_diff < (5/255)
+            if color_diff < 5/255
                 segRes(IBS) = i;
                 is_joined = 1;
             end
@@ -59,23 +61,17 @@ while i <= index
     end
 end
 
-figure;
-subplot(1,2,1);
-imshow(img_org);
-subplot(1,2,2);
-imshow(segRes, []);
-
-min = 33;
-uni = unique(segRes);
-for i = 1:numel(uni)
-    C = segRes == uni(i);
+min = 100
+U = unique(segRes);
+for i = 1:numel(U)
+    C = segRes == U(i);
     if sum(C) < min
         segRes(C) = 0;
     end
 end
 
-for i = 1:numel(uni)
-    C = segRes == uni(i);
+for i = 1:numel(U)
+    C = segRes == U(i);
     segRes(C) = i;
 end
 
