@@ -9,9 +9,11 @@ img = imread('knee.png');
 figure;
 imshow(img);
 
-%[x,y] = ginput(1);
+
 x = 280;
 y = 320;
+
+[x,y] = ginput(1);
 
 x = floor(x);
 y = floor(y);

@@ -6,8 +6,11 @@ clc;
 %% 2
 img = imread('lab112.png');
 cleared = im2bw(img, 0.2);
-cleared = imdilate(cleared, ones(3,10));
 
+cleared = imdilate(cleared, ones(3,10));
+imshow(cleared);
+
+%% 
 figure;
 subplot(1,2,1);
 imshow(img);

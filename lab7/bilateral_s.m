@@ -6,15 +6,15 @@ load MR_data.mat
 
 local_window = [9,9];
 
-img = I_noisy1;
+img = I_noisy2;
 
-bild = bilateral(I_noisy1, local_window);
+bild = bilateral(img, local_window);
 
 figure;
 subplot(1,2,1);
-imshow(uint8(img), []);
+imshow(uint8(img));
 subplot(1,2,2);
-imshow(uint8(bild), []);
+imshow(uint8(bild));
 
 function Img = bilateral(data, local_window)
 
@@ -26,7 +26,7 @@ end
 function Out = bilateral_local(data, local_window)
  Nx = size(data, 2);
  h = fspecial('gaussian', local_window, 5);
- ro = 15;
+ ro = 40;
  
  for i = 1:Nx
     patch = reshape(data(:, i), local_window);

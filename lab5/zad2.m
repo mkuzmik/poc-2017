@@ -4,7 +4,7 @@ close all;
 clearvars;
 
 %% avg local
-img = imread('katalog.bmp');
+img = imread('rice.png');
 [x,y] = size(img);
 bw_img = img;
 
@@ -33,7 +33,7 @@ subplot(1,2,2);
 imshow(bw_img);
 
 %% squvola local
-img = imread('katalog.bmp');
+img = imread('rice.png');
 [x,y] = size(img);
 bw_img = img;
 
@@ -50,8 +50,10 @@ for i = 1:x
         a = avg * (1 + k * ((std/R) - 1));
         b = avg * (1 - k * ((std/R) - 1));
 
-        % TODO (a or b)
         threshold = a;
+        if (std > 20) 
+            threshold = b;
+        end
         
         if bw_img(i,j) > threshold
             bw_img(i,j) = 255;

@@ -24,7 +24,7 @@ subplot(1,2,2);
 imshow(edged);
 
 %% d
-edged_log = edge(img, 'log', [], 2);
+edged_log = edge(img, 'log', 0.005, 2.3);
 edged_canny = edge(img, 'canny', [], 2);
 edged_sobel = edge(img, 'sobel', []);
 

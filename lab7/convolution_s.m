@@ -6,9 +6,9 @@ load MR_data.mat
 
 local_window = [9,9];
 
-img = I_noisy1;
+img = I_noisy4;
 
-convd = convolution(I_noisy1, local_window);
+convd = convolution(img, local_window);
 
 figure;
 subplot(1,2,1);

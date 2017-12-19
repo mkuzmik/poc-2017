@@ -12,8 +12,8 @@ global MRes;
 
 %% 2,3
 img_org = imread('umbrealla.png');
-threshold = 0.05;
-minimum = 2;
+threshold = 0.08;
+minimum = 4;
 
 img_hsv = rgb2hsv(img_org);
 img_h = double(img_hsv(:,:,1));

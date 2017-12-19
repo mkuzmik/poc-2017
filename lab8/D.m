@@ -37,9 +37,9 @@ eroded = imerode(cleaned, ones(1,11));
 cleaned = imreconstruct(eroded, cleaned);
 
 %% 6
-% dilated = imdilate(cleaned, ones(1,21));
-% cleaned = imreconstruct(min(dilated, reconstructed), reconstructed);
-% cleaned = imabsdiff(img, cleaned);
+dilated = imdilate(cleaned, ones(1,21));
+cleaned = imreconstruct(min(dilated, reconstructed), reconstructed);
+cleaned = imabsdiff(img, cleaned);
 
 figure;
 subplot(1,2,1);

@@ -117,9 +117,10 @@ imshow(histeq(img3,256));
 subplot(3,3,9);
 imshow(adapthisteq(img3));
 
+
 %% functions
 
-function [x_axis, cumulated_normalized_hist, hist] = cumulatedHist(img)
+function [x_axis, cumulated_hist, hist] = cumulatedHist(img)
     [hist, x_axis] = imhist(img);
     cumulated_hist = cumsum(hist);
     k = max(cumulated_hist)/max(hist);
@@ -128,7 +129,8 @@ end
 
 function he_img = he_algo(img)
     [~, cum, ~] = cumulatedHist(img);
-    cum_lut = uint8(cum .* 255/max(cum));
+    [x,y] = size(img);
+    cum_lut = uint8(cum .* 255/(x*y));
     he_img = intlut(img, cum_lut);
     
     figure;

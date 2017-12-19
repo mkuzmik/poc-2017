@@ -59,17 +59,17 @@ subplot(1,6,2);
 imhist(img);
 title('Histogram');
 
-threshold = graythresh(img);
+threshold = graythresh(img)
 subplot(1,6,3);
 imshow(im2bw(img, threshold));
 title('Otsu');
 
-threshold = clusterKittler(img);
+threshold = clusterKittler(img)
 subplot(1,6,4);
 imshow(im2bw(img, threshold/255));
 title('ClusterKittel()');
 
-threshold = entropyYen(img);
+threshold = entropyYen(img)
 subplot(1,6,5);
 imshow(im2bw(img, threshold/255));
 title('EntropyYen()');
