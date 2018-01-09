@@ -1,4 +1,4 @@
-%% 1 
+%% 1,2,3
 close all;
 clearvars;
 clc;
@@ -10,22 +10,21 @@ img = imread('shapes.png');
 indexed = bwlabel(img, 4);
 
 imshow(indexed,[]);
-%% 2
+
 wsp = obliczWspolczynniki(indexed)
 
-%% 3
+
 r = regionprops(indexed, 'Centroid');
 for i=1:length(r)
     text(r(i).Centroid(1),r(i).Centroid(2),['\color{magenta}',num2str(i)]);
 end
 
-%% 5
 [YY,XX] = size(img);
 
 for x=1:XX
     for y=1:YY
         px = indexed(x,y);
-        if (px ~= 0 && (wsp(px,1) > 0.8 || wsp(px,1) < 0.7))
+        if (px ~= 0 && (wsp(px,3) > 5.0 || wsp(px,3) < 4.8))
             indexed(x,y) = 0;
         end
     end
@@ -74,7 +73,7 @@ end
 for x=1:XX
     for y=1:YY
         px = indexed(x,y);
-        if (px ~= 0 && (wsp(px,1) > 0.85 || wsp(px,1) < 0.75))
+        if (px ~= 0 && (wsp(px,2) > 0.7 || wsp(px,2) < 0.6 || wsp(px,3) < 5))
             indexed(x,y) = 0;
         end
     end
